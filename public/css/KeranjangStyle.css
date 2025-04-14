@@ -1,0 +1,244 @@
+body{
+    background-image: url('../img/bukufoto.png');
+    /* background-position-x: 10px; */
+    background-position-y: -160px;
+    background-size: 1570px;
+    
+}
+
+.cardUtama {
+    justify-content: center;
+    background-color: white; /* Latar belakang putih */
+    height: auto; /* Tinggi card */
+    width: auto; /* Lebar card */
+    margin: 30px 30px; /* Pusatkan card secara horizontal */
+    border-radius: 35px 35px 10px 10px; /* Membuat sudut membulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    /* display: flex; */
+    /* flex-direction: column; */
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+    z-index: 1;
+}
+
+.cardUtama .navbar {
+    height: auto;
+    width: auto;
+    background-color: #9aa5a0;
+    border-radius: 50px;
+}
+
+.navbar {
+    padding: 10px 20px 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardUtama .navbar .logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.Searchmiddle {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Tambahkan jarak antar elemen */
+}
+
+.search {
+    background-color: white;
+    border-radius: 90px;
+    padding: 5px 15px;
+    list-style-type: none;
+    display: flex; 
+    align-items: center; /* Pusatkan elemen secara horizontal */
+    gap: 10px; /* Tambahkan jarak antar elemen */
+    width: 500px;
+
+    input {
+        flex-grow: 1;
+    }
+}
+
+.search li {
+    display: flex; 
+    justify-content: center; /* Pusatkan konten di dalam <li> */
+    width: 100%;
+
+}
+.search img {
+    width: 20px; /* Atur lebar gambar */
+    height: 20px; /* Atur tinggi gambar */
+    object-fit: contain; /* Pastikan gambar tetap proporsional */
+}
+
+.search input{
+    border: none;
+}
+
+.ShpCart img{
+    width: 70%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the image scales proportionally */
+}
+
+.picprofile {
+    height: 50px;
+    width: 50px;
+}
+
+.picprofile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 50%; 
+    border: white 2px solid;
+}
+
+.Cart-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.atas{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+.conselect {
+    display: flex;
+    justify-content: space-between; /* Jarak antara tombol */
+    align-items: center; /* Pusatkan secara vertikal */
+    background-color: #9aa5a0; /* Warna latar belakang */
+    padding: 15px;
+    width: 100%; /* Panjang penuh */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+    gap: 10px; /* Tambahkan jarak antar tombol */
+    border-radius: 20px;
+    button{
+        border-radius: 20px;
+        background-color: #9aa5a0; /* Warna latar belakang tombol */
+    }
+    a {
+        text-decoration: none; /* Hapus garis bawah pada tautan */
+        color: black; /* Warna teks tautan */
+    }
+    a:hover {
+        color: white; /* Warna teks saat hover */
+    }
+}
+
+.conselect button:hover {
+    background-color: #d3d3d3; /* Warna latar belakang saat hover */
+}
+
+.produk {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dfe7e2; /* Warna latar belakang produk */
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+    gap: 15px; /* Tambahkan jarak antar elemen di dalam produk */
+    width: 100%;
+}
+
+.produk .checkbox {
+    width: 20px; /* Ukuran checkbox */
+    height: 20px; /* Ukuran checkbox */
+    accent-color: #9aa5a0; /* Warna checkbox */
+    cursor: pointer; /* Ubah kursor menjadi pointer */
+    margin-right: 15px; /* Tambahkan jarak antara checkbox dan produk */
+}
+
+.produk-detail {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Jarak antara gambar dan detail produk */
+    flex: 1; /* Isi ruang yang tersedia */
+}
+
+.produk-img {
+    width: 80px; /* Ukuran gambar produk */
+    height: 100px;
+    object-fit: cover; /* Pastikan gambar tetap proporsional */
+    border-radius: 5px;
+}
+
+.produk-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.produk-info h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.produk-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.hubungi-penjual {
+    padding: 8px 12px;
+    background-color: #9aa5a0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hubungi-penjual:hover {
+    background-color: #7f8c8d;
+}
+
+.hapus-produk {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hapus-produk:hover {
+    color: #e74c3c;
+}
+
+.hapus {
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
