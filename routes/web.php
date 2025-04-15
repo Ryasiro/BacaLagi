@@ -27,4 +27,5 @@ Route::get('/produk', [DescController::class, 'index'])->name('desc');
 
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
 
-Route::get('/add', [AddProdukController::class, 'index'])->name('AddProduct');
+Route::get('/add', [AddProdukController::class, 'index'])->name('AddProductIndex');
+Route::post('/add', [AddProdukController::class, 'store'])->name('produk.store');
