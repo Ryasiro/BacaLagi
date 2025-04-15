@@ -43,7 +43,7 @@
             <div class="alignbody">
                 <div class="Cart-body">
                     <h2>Form Penjualan</h2>
-                    <form action="{{ url('/addProduk') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Upload Foto -->
                         <div class="form-group">
