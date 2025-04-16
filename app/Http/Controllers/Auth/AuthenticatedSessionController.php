@@ -24,11 +24,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->authenticate(); // Memastikan kredensial valid
 
-        $request->session()->regenerate();
+        $request->session()->regenerate(); // Regenerasi sesi untuk keamanan
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Flash message untuk notifikasi
+        session()->flash('success', 'Anda berhasil login!');
+
+        // Arahkan ke halaman AddProduk
+        return redirect()->intended(route('AddProductIndex'));
     }
 
     /**
@@ -40,8 +44,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->invalidate();
 
+        
+
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

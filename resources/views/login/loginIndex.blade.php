@@ -6,11 +6,10 @@
   <title>Login - BacaLagi</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-image: url('{{ asset('img/bukufoto.png') }}');/* Ganti dengan gambar latar belakang */
+      background-image: url('{{ asset('img/bukufoto.png') }}'); /* Ganti dengan gambar latar belakang */
       background-size: cover;
       background-position: center;
       min-height: 100vh;
@@ -72,9 +71,7 @@
             <input type="password" class="form-control" placeholder="Password" required />
           </div>
           <div class="mb-3 forgot-pass">
-            <p class="text-center mt-3 mb-0" style="font-size: 0.85rem;">
-                Belum punya akun? <a href="{{ route('register') }}" class="text-decoration-none">Daftar</a>
-            </p>
+            <a href="#" class="text-decoration-none">Lupa Password?</a>
           </div>
           <button type="submit" class="btn btn-custom w-100 mb-2">Log In</button>
         </form>
