@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -28,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        Log::info('User logged in successfully.');
+        // dd(Auth::user()); 
 
         return redirect()->route('dashboard');
     }
@@ -41,11 +42,8 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
-        
-
         $request->session()->regenerateToken();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->route('login');
     }
 }

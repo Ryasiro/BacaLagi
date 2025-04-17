@@ -63,20 +63,29 @@
         <h5 class="fw-semibold mb-0" style="color: #c57d92;">BacaLagi</h5>
         <h3 class="fw-bold mb-4 mt-2" style="color: #2d4b3a;">Karena setiap buku<br>pantas dibaca lagi.</h3>
 
-        <form>
+        <form method="POST" action="{{ route('login') }}">
+          @csrf <!-- Token CSRF diperlukan untuk keamanan -->
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Email" required />
+              <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required />
+              @error('email')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
           </div>
           <div class="mb-2">
-            <input type="password" class="form-control" placeholder="Password" required />
+              <input type="password" name="password" class="form-control" placeholder="Masukkan password Anda" required />
+              @error('password')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
           </div>
           <div class="mb-3 forgot-pass">
-            <a href="#" class="text-decoration-none">Lupa Password?</a>
+            <a href="{{ route('password.request') }}" class="text-decoration-none">Lupa Password?</a>
           </div>
           <button type="submit" class="btn btn-custom w-100 mb-2">Log In</button>
         </form>
 
-        <p class="text-center mt-3 mb-0" style="font-size: 0.85rem;">Belum punya akun?</p>
+        <p class="text-center mt-3 mb-0" style="font-size: 0.85rem;">
+          Belum punya akun? <a href="{{ route('register') }}" class="text-decoration-none">Daftar</a>
+        </p>
       </div>
 
       <!-- Gambar Kanan -->
