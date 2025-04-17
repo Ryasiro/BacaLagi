@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -24,15 +25,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate(); // Memastikan kredensial valid
+        $request->authenticate();
+        $request->session()->regenerate();
 
-        $request->session()->regenerate(); // Regenerasi sesi untuk keamanan
+        Log::info('User logged in successfully.');
 
-        // Flash message untuk notifikasi
-        session()->flash('success', 'Anda berhasil login!');
-
-        // Arahkan ke halaman AddProduk
-        return redirect()->intended(route('AddProductIndex'));
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -48,6 +46,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 }

@@ -80,7 +80,7 @@
       </div>
 
       <!-- Gambar Kanan -->
-      <div class="col-md-6 d-none d-md-block p-0">
+      <div class="col-md-6 d-none d-md-block p-3">
         <img src="{{ asset('img/bukufoto.png') }}" alt="Book Preview" class="book-image" />
       </div>
 
