@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+//route add produk
 Route::middleware('auth')->group(function () {
     Route::get('/add', [AddProdukController::class, 'index'])->name('AddProductIndex');
     Route::post('/add', [AddProdukController::class, 'store'])->name('produk.store');
