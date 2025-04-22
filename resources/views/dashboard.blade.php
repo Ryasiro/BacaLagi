@@ -9,7 +9,7 @@
 <body class="bg-[url('/img/bukufoto.png')] bg-cover bg-center min-h-screen">
 
     <!-- Header -->
-    <div class="mx-8 mt-6 rounded-t-[50px] bg-white shadow-lg">
+    <div class="mx-8 mt-5 rounded-t-[50px] bg-white shadow-lg">
             <div class="flex items-center justify-between bg-[#9aa5a0] rounded-full px-6 py-4 shadow-md">
                 
                 <!-- Logo -->
@@ -43,25 +43,34 @@
 
         <!-- Promo Section -->
         <div class="px-14 mt-14">
-            <div class="grid md:grid-cols-3 gap-4 mb-10">
+            <div class="grid md:grid-cols-3 gap-4 mb-10 ">
                 <div class="md:col-span-2">
-                    <img src="{{ asset('img/promo/main-promo.avif') }}" class="rounded-xl w-full h-auto object-cover" alt="Promo Utama">
+                    <a href="{{ url('/promo/main') }}">
+                        <img src="{{ asset('img/promo/main-promo.avif') }}" class="rounded-xl w-full h-auto object-cover hover:opacity-90 transition " alt="Promo Utama">
+                    </a>
                 </div>
-                <div class="flex flex-col gap-4">
-                    <img src="{{ asset('img/promo/promo1.avif') }}" class="rounded-xl w-full h-auto object-cover" alt="Promo 30%">
-                    <img src="{{ asset('img/promo/promo2.avif') }}" class="rounded-xl w-full h-auto object-cover" alt="Promo Ramadan">
+                <div class="flex flex-col gap-2">
+                    <a href="{{ url('/promo/promo1') }}">
+                        <img src="{{ asset('img/promo/promo1.avif') }}" class="rounded-xl w-full h-auto object-cover hover:opacity-90 transition " alt="Promo 30%">
+                    </a>
+                    <a href="{{ url('/promo/promo2') }}">
+                    <img src="{{ asset('img/promo/promo2.avif') }}" class="rounded-xl w-full h-auto object-cover hover:opacity-90 transition" alt="Promo Ramadan">
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- Favorite Books Section -->
         <div class="px-6 mt-10 mb-10">
-            <h2 class="text-2xl font-bold text-gray-700 mb-4">Bacaan Favorit Pekan Ini</h2>
+            <h2 class="text-2xl font-bold text-[#4E695C] mb-7 px-7">Katalog Buku</h2>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-7">
                 @foreach(range(1, 18) as $i)
                     <div class="bg-white rounded-xl shadow-md overflow-hidden text-center">
-                        <img src="{{ asset('images/book'.$i.'.jpg') }}" alt="Book {{$i}}" class="w-full h-60 object-cover">
+                        <div class="aspect-[3/3] overflow-hidden">
+                            <img src="{{ asset('img/bukufoto.png') }}" alt="Book {{$i}}" 
+                                class="w-full h-full object-cover" />
+                        </div>
                         <div class="p-3 text-sm text-gray-700">
                             Lorem Ipsum Dolor sit amet
                         </div>
@@ -69,6 +78,7 @@
                 @endforeach
             </div>
         </div>
+
 
         
     
