@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         // dd(Auth::user()); 
 
-        return redirect()->route('AddProductIndex');
+        return redirect()->route('dashboard');
     }
 
     /**

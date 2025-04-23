@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProdukModel;
+use App\Notifications\ProdukVerifikasiNotification;
+
 
 class AddProdukController extends Controller
 {
@@ -36,5 +38,18 @@ class AddProdukController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $produk = ProdukModel::findOrFail($id);
+        $produk->status = $status;
+        $produk->save();
+
+        if ($produk->user) {
+            $produk->user->notify(new ProdukVerifikasiNotification($status));
+        }
+
+        return redirect()->back()->with('success', 'Status produk diperbarui.');
     }
 }

@@ -17,6 +17,12 @@ class ProdukModel extends Model
         'harga_jual',
         'judul_buku',
         'informasi_buku',
-        'detail_buku'
+        'detail_buku',
+        'status',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
