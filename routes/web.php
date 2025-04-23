@@ -6,6 +6,7 @@ use App\Http\Controllers\DescController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddProdukController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,7 +19,6 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');
     Route::post('/admin/produk/{id}/{status}', [AdminController::class, 'updateStatus'])->name('admin.produk.status');
 });
-
 
 //dahsboard
 Route::get('/dashboard', function () {
@@ -37,6 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/add', [AddProdukController::class, 'index'])->name('AddProductIndex');
     Route::post('/add', [AddProdukController::class, 'store'])->name('produk.store');
 });
+
+//notif
+Route::get('/notifikasi', [NotificationController::class, 'index'])->name('user.notifications');
+
+
+
+
+
 
 
 //test

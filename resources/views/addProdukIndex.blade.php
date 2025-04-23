@@ -49,41 +49,41 @@
                         @csrf
                         <!-- Upload Foto -->
                         <div class="form-group">
-                            <label for="uploadFoto">Upload Foto</label>
-                            <input type="file" id="uploadFoto" name="foto" class="form-control">
+                            <label for="foto">Foto</label>
+                            <input type="file" name="foto" id="foto" class="form-control">
                         </div>
-            
-                        <!-- Tambahkan Nomor WA -->
+                    
+                        <!-- Nomor WA -->
                         <div class="form-group">
-                            <label for="nomorWA">Tambahkan Nomor WA</label>
-                            <input type="text" id="nomorWA" name="nomor_wa" class="form-control" placeholder="Masukkan nomor WhatsApp">
+                            <label for="nomor_wa">Nomor WA</label>
+                            <input type="text" name="nomor_wa" id="nomor_wa" class="form-control" required>
                         </div>
-            
+                    
                         <!-- Harga Jual -->
                         <div class="form-group">
-                            <label for="hargaJual">Harga Jual</label>
-                            <input type="text" id="hargaJual" name="harga_jual" class="form-control" placeholder="Masukkan harga jual">
+                            <label for="harga_jual">Harga Jual</label>
+                            <input type="number" name="harga_jual" id="harga_jual" class="form-control" required>
                         </div>
-            
+                    
+                        <!-- Judul Buku -->
+                        <div class="form-group">
+                            <label for="judul_buku">Judul Buku</label>
+                            <input type="text" name="judul_buku" id="judul_buku" class="form-control" required>
+                        </div>
+                    
                         <!-- Informasi Buku -->
                         <div class="form-group">
-                            <label>Informasi Buku</label>
-                            <div class="form-group">
-                                <label for="judulBuku">Judul Buku</label>
-                                <input type="text" id="judulBuku" name="judul_buku" class="form-control" placeholder="Masukkan judul buku">
-                            </div>
-                            <div class="form-group">
-                                <label for="informasiBuku">Informasi Buku</label>
-                                <input type="text" id="informasiBuku" name="informasi_buku" class="form-control" placeholder="Masukkan informasi buku">
-                            </div>
-                            <div class="form-group">
-                                <label for="detailBuku">Detail Buku</label>
-                                <textarea id="detailBuku" name="detail_buku" class="form-control" rows="3" placeholder="Masukkan detail buku"></textarea>
-                            </div>
+                            <label for="informasi_buku">Informasi Buku</label>
+                            <textarea name="informasi_buku" id="informasi_buku" class="form-control" required></textarea>
                         </div>
-            
-                        <!-- Tombol Upload -->
-                        <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                    
+                        <!-- Detail Buku -->
+                        <div class="form-group">
+                            <label for="detail_buku">Detail Buku</label>
+                            <textarea name="detail_buku" id="detail_buku" class="form-control" required></textarea>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">Tambah Produk</button>
                     </form>
                 </div>
             </div>
