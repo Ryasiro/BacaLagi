@@ -38,8 +38,8 @@
                     <a href="{{ url('/profile') }}">
                         <img src="{{ asset('/img/Profile.jpg') }}" alt="Profile" class="w-full h-full rounded-full object-cover border-2 border-white" />
                     </a>
-                </div>
             </div>
+    </div>
 
         <!-- Promo Section -->
         <div class="px-14 mt-14">
@@ -67,7 +67,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-7">
                 @foreach(range(1, 18) as $i)
                     <div class="bg-white rounded-xl shadow-md overflow-hidden text-center">
-                        <div class="aspect-[3/3] overflow-hidden">
+                        <div class="aspect-[3/4] overflow-hidden">
                             <img src="{{ asset('img/bukufoto.png') }}" alt="Book {{$i}}" 
                                 class="w-full h-full object-cover" />
                         </div>
