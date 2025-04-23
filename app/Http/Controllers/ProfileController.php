@@ -22,10 +22,10 @@ class ProfileController extends Controller
             'gender' => 'nullable|string',
             'birth_date' => 'nullable|date',
             'phone_number' => 'nullable|string|max:20',
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_photo_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $user = auth()->user();
+        $user = Auth::user();
 
         // Upload photo if available
         if ($request->hasFile('profile_photo')) {

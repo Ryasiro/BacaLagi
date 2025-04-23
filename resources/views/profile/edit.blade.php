@@ -15,7 +15,7 @@
                 
                 <!-- Logo -->
                 <div class="text-white text-2xl font-bold">
-                    <a href="{{ url('/home') }}">BacaLagi</a>
+                    <a href="{{ url('/dashboard') }}">BacaLagi</a>
                 </div>
 
                 <!-- Search and Cart -->
