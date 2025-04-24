@@ -13,7 +13,7 @@
         <div class="flex items-center justify-between bg-[#9aa5a0] rounded-full px-6 py-4 shadow-md">
             
             <!-- Logo -->
-            <div class="text-white text-2xl font-bold">
+            <div class="text-white text-2xl font-bold ">
                 <a href="{{ url('/home') }}">BacaLagi</a>
             </div>
 
@@ -54,7 +54,9 @@
             <!-- Profile -->
             <div class="h-12 w-12">
                 <a href="{{ url('/profile') }}">
-                    <img src="{{ asset('/img/Profile.jpg') }}" alt="Profile" class="w-full h-full rounded-full object-cover border-2 border-white" />
+                    <img src="{{ Auth::user()->profile_photo_path ? asset(Auth::user()->profile_photo_path) : asset('/img/Profile.jpg') }}" 
+                        alt="Profile" 
+                        class="w-full h-full rounded-full object-cover border-2 border-white" />
                 </a>
             </div>
         </div>

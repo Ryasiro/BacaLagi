@@ -15,7 +15,7 @@
                 
                 <!-- Logo -->
                 <div class="text-white text-2xl font-bold">
-                    <a href="{{ url('/home') }}">BacaLagi</a>
+                    <a href="{{ url('/dashboard') }}">BacaLagi</a>
                 </div>
 
                 <!-- Search and Cart -->
@@ -37,18 +37,19 @@
                 <!-- Profile -->
                 <div class="h-12 w-12">
                     <a href="{{ url('/profile') }}">
-                        <img src="{{ asset('/img/Profile.jpg') }}" alt="Profile" class="w-full h-full rounded-full object-cover border-2 border-white" />
+                        <img src="{{ Auth::user()->profile_photo_path ? asset(Auth::user()->profile_photo_path) : asset('/img/Profile.jpg') }}" 
+                            alt="Profile" 
+                            class="w-full h-full rounded-full object-cover border-2 border-white" />
                     </a>
-            </div>
+                </div>
     </div>
+    
     <div class="px-6 py-5  max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-6">
-            <h1 class="text-3xl font-bold text-[#4E695C]">Akun</h1>
-        </div>
+        
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="px-8 mt-16 grid md:grid-cols-3 gap-6">
             {{-- Sidebar --}}
-            <div class="flex flex-col items-center text-center">
+            <div class="flex flex-col items-center text-center mt-16">
                 <div class="relative">
                     <img src="{{ Auth::user()->profile_photo_path ? asset(Auth::user()->profile_photo_path) : asset('images/default-avatar.png') }}"
                         class="rounded-full w-28 h-28 object-cover border shadow" alt="Foto Profil">
@@ -73,10 +74,19 @@
                     <div class="text-gray-600 hover:text-[#4E695C] cursor-pointer">Wishlist</div>
                     <div class="text-gray-600 hover:text-[#4E695C] cursor-pointer">Alamat</div>
                 </div>
+
+                <div class="mt-4 pt-2">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="w-full bg-red-600 rounded-lg p-2 text-center text-white font-medium hover:bg-red-700 transition">
+                            Keluar (Logout)
+                        </button>
+                    </form>
+                </div>
             </div>
 
             {{-- Form --}}
-            <div class="md:col-span-2">
+            <div class="md:col-span-2 px-8 mt-4">
                 <h2 class="text-xl font-bold text-[#4E695C] mb-4">Pengaturan Profil</h2>
 
                 <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
