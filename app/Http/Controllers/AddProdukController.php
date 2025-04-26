@@ -27,10 +27,10 @@ class AddProdukController extends Controller
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('produk_foto', 'public');
         }
-
+        $nomorLengkap = $request->kode_negara . $request->nomor_wa;
         ProdukModel::create([
             'foto' => $fotoPath,
-            'nomor_wa' => $request->nomor_wa,
+            'nomor_wa' => $nomorLengkap,
             'harga_jual' => $request->harga_jual,
             'judul_buku' => $request->judul_buku,
             'informasi_buku' => $request->informasi_buku,

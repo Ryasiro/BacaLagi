@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nomor_wa');
             $table->decimal('harga_jual', 10, 2);
             $table->string('judul_buku');
-            $table->string('informasi_buku');
+            $table->longText('informasi_buku');
             $table->text('detail_buku');
             $table->timestamps();
         });

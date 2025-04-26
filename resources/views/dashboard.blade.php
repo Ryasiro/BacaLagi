@@ -14,19 +14,19 @@
             
             <!-- Logo -->
             <div class="text-white text-2xl font-bold ">
-                <a href="{{ url('/home') }}">BacaLagi</a>
+                <a href="{{ url('/dashboard') }}">BacaLagi</a>
             </div>
 
             <!-- Search and Icons -->
             <div class="flex items-center gap-4">
                 <!-- Search -->
-                <div class="flex items-center bg-white rounded-full px-4 py-2 w-[500px]">
+                <div class="flex items-center bg-white rounded-full px-4 py-3 w-[500px]">
                     <input type="text" name="search" placeholder="Lagi cari buku apa?" class="flex-grow border-none focus:outline-none text-sm text-gray-800" />
                     <a href="{{ url('/search') }}">
                         <img src="{{ asset('/img/search.png') }}" alt="Search" class="w-5 h-5" />
                     </a>
                 </div>
-
+            
                 <!-- Cart -->
                 <a href="{{ url('/keranjang') }}">
                     <img src="{{ asset('/img/Shopping_Cart.png') }}" alt="Keranjang" class="w-7 h-7 object-contain" />
@@ -48,8 +48,8 @@
                             </span>
                         @endif
                     </a>
+                </div>
             </div>
-    </div>
 
             <!-- Profile -->
             <div class="h-12 w-12">
@@ -80,32 +80,42 @@
             </div>
         </div>
 
-        <!-- Buku Favorit / Katalog -->
-        <div class="px-6 mt-10 mb-10">
-            <h2 class="text-2xl font-bold text-[#4E695C] mb-7 px-7">Katalog Buku</h2>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-7">
-                @foreach(range(1, 18) as $i)
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden text-center">
-                        <div class="aspect-[3/4] overflow-hidden">
-                            <img src="{{ asset('img/bukufoto.png') }}" alt="Book {{$i}}" 
-                                class="w-full h-full object-cover" />
-                        </div>
-                        <div class="p-3 text-sm text-gray-700">
-                            Lorem Ipsum Dolor sit amet
-                        </div>
+        <!--  Katalog -->
+        <!-- Katalog Buku Section -->
+        <div class="px-14 mt-10 mb-20">
+            <h2 class="text-2xl font-bold text-[#4E695C] mb-7">Katalog Buku</h2> <!-- Menambahkan judul katalog buku -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            @forelse($produk as $item)
+                <a href="{{ route('produk.detail', [$item->judul_buku,$item->id])}}" class="bg-white rounded-xl shadow-md overflow-hidden text-center hover:shadow-lg transition duration-300">
+                    <div class="w-full aspect-[3/4] bg-gray-100">
+                        <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul_buku }}"
+                            class="w-full h-full object-cover object-top" />
                     </div>
-                @endforeach
+                    <div class="p-3 text-sm text-gray-700 font-semibold truncate">
+                        {{ $item->judul_buku }}
+                    </div>
+                </a>
+            @empty
+                <p class="text-gray-500 col-span-full text-center">Belum ada buku yang tersedia.</p>
+            @endforelse
             </div>
         </div>
 
-    </div>
-
     <!-- Sticky Button -->
     <a href="{{ route('AddProductIndex') }}" 
-       class="fixed bottom-5 right-5 bg-[#9aa5a0] text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition">
+       class="fixed bottom-5 right-5 bg-[#9aa5a0] text-white px-8 py-4 rounded-full shadow-lg hover:bg-green-600 transition">
         Tambah Produk
     </a>
-
 </body>
+
+<!-- Footer -->
+<footer class="bg-[#9aa5a0] text-white">
+    
+    <!-- Copyright Section -->
+    <div class="bg-[#85908c] py-4">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; {{ date('Y') }} BacaLagi. Hak Cipta Dilindungi.</p>
+        </div>
+    </div>
+</footer>
 </html>

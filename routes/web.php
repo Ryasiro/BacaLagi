@@ -7,23 +7,33 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AddProdukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect()->route('dashboard'); // arahkan ke dashboard jika sudah login
+    }
+    return redirect()->route('login'); // arahkan ke login jika belum login
 });
-
-
 
 //admin
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');
     Route::post('/admin/produk/{id}/{status}', [AdminController::class, 'updateStatus'])->name('admin.produk.status');
 });
+//route delete produk
+Route::delete('/admin/produk/{id}/hapus', [AdminController::class, 'hapusProduk'])->name('admin.produk.hapus');
+Route::get('/admin/produk/accepted', [AdminController::class, 'produkDiterima'])->name('admin.produk.diterima');
 
-//dahsboard
+
+
+//dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 //middleware autentikasi
 Route::middleware('auth')->group(function () {
@@ -44,13 +54,13 @@ Route::get('/notifikasi', [NotificationController::class, 'index'])->name('user.
 
 
 
+// routes/web.php
+Route::get('/produk/{judul_buku}/{id}', [ProdukController::class, 'show'])->name('produk.detail');
 
 
-
-//test
-Route::get('/produk', [DescController::class, 'index'])->name('desc');
 
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
+
 
 
 
