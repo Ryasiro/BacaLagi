@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -52,12 +53,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/notifikasi', [NotificationController::class, 'index'])->name('user.notifications');
 
 
-
-
 // routes/web.php
 Route::get('/produk/{judul_buku}/{id}', [ProdukController::class, 'show'])->name('produk.detail');
 
-
+//route search
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
 

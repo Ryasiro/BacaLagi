@@ -79,8 +79,6 @@
           </div>
           <button type="submit" class="btn btn-custom w-100 mb-2">Log In</button>
       </form>
-
-        <p class="text-center mt-3 mb-0" style="font-size: 0.85rem;">Belum punya akun?</p>
       </div>
 
       <!-- Gambar Kanan -->
