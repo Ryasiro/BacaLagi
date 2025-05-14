@@ -127,4 +127,12 @@
             </div>
         </div>
     </div>
+    <footer class="bg-[#4E695C] text-white mx-8 rounded-b-[50px] shadow-lg mt-0">
+        <div class="bg-[#85908c] py-4">
+            <div class="container mx-auto px-6 text-center">
+                <p>&copy; {{ date('Y') }} BacaLagi. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
 </body>
+
