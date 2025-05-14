@@ -22,18 +22,17 @@ Route::get('/', function () {
 Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');
     Route::post('/admin/produk/{id}/{status}', [AdminController::class, 'updateStatus'])->name('admin.produk.status');
+    // Tambahkan route baru di dalam grup middleware admin
+    Route::delete('/admin/produk/{id}/hapus', [AdminController::class, 'hapusProduk'])->name('admin.produk.hapus');
+    Route::get('/admin/produk/accepted', [AdminController::class, 'produkDiterima'])->name('admin.produk.diterima');
+    // Route untuk manajemen user
+    Route::get('/admin/users', [AdminController::class, 'userList'])->name('admin.users');
+    Route::get('/admin/users/{id}', [AdminController::class, 'userDetail'])->name('admin.user.detail');
+    // Route untuk melihat semua produk
+    Route::get('/admin/semua-produk', [AdminController::class, 'allProduk'])->name('admin.all.produk');
 });
-//route delete produk
-Route::delete('/admin/produk/{id}/hapus', [AdminController::class, 'hapusProduk'])->name('admin.produk.hapus');
-Route::get('/admin/produk/accepted', [AdminController::class, 'produkDiterima'])->name('admin.produk.diterima');
-
-
 
 //dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 //middleware autentikasi
@@ -52,7 +51,6 @@ Route::middleware('auth')->group(function () {
 //notif
 Route::get('/notifikasi', [NotificationController::class, 'index'])->name('user.notifications');
 
-
 // routes/web.php
 Route::get('/produk/{judul_buku}/{id}', [ProdukController::class, 'show'])->name('produk.detail');
 
@@ -60,10 +58,5 @@ Route::get('/produk/{judul_buku}/{id}', [ProdukController::class, 'show'])->name
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
-
-
-
-
-
 
 require __DIR__.'/auth.php';
