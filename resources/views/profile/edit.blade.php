@@ -86,64 +86,134 @@
             </div>
 
             {{-- Form --}}
+            {{-- Form --}}
             <div class="md:col-span-2 px-8 mt-4">
                 <h2 class="text-xl font-bold text-[#4E695C] mb-4">Pengaturan Profil</h2>
 
-                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PATCH')
+                {{-- Profile Information Form --}}
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="mb-8">
+                    @csrf
+                    @method('PATCH')
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                        <input type="text" name="name" value="{{ old('name', $user->name) }}"
-                            class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2">
-                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <input type="text" name="name" value="{{ old('name', $user->name) }}"
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2">
+                            @error('name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" disabled value="{{ $user->email }}"
-                            class="mt-1 block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg p-2">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" disabled value="{{ $user->email }}"
+                                class="mt-1 block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg p-2">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Kata Sandi</label>
-                        <input type="password" disabled value="password"
-                            class="mt-1 block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg p-2">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                            <select name="gender" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki" {{ $user->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="Perempuan" {{ $user->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            </select>
+                            @error('gender')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
-                        <select name="gender" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
-                            <option value="">Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki" {{ $user->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                            <option value="Perempuan" {{ $user->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                        </select>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+                            <input type="date" name="birth_date" value="{{ old('birth_date', $user->birth_date) }}"
+                                class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
+                            @error('birth_date')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
-                        <input type="date" name="birth_date" value="{{ old('birth_date', $user->birth_date) }}"
-                            class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">No. Telepon</label>
+                            <input type="text" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
+                                class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
+                            @error('phone_number')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">No. Telepon</label>
-                        <input type="text" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}"
-                            class="mt-1 block w-full border border-gray-300 rounded-lg p-2">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Ubah Foto Profil</label>
+                            <input type="file" name="profile_photo"
+                                class="mt-1 block w-full text-gray-700 border border-gray-300 rounded-lg p-2">
+                            @error('profile_photo')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Ubah Foto Profil</label>
-                        <input type="file" name="profile_photo"
-                            class="mt-1 block w-full text-gray-700 border border-gray-300 rounded-lg p-2">
-                    </div>
-
-                    <div class="pt-4">
-                        <button type="submit"
-                            class="bg-[#4E695C] text-white px-4 py-2 rounded-lg hover:bg-[#3b564a] transition">Simpan Perubahan</button>
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="bg-[#4E695C] text-white px-4 py-2 rounded-lg hover:bg-[#3b564a] transition">Simpan Perubahan</button>
+                        </div>
                     </div>
                 </form>
+
+                {{-- Password Update Form --}}
+                <div class="pt-4 border-t border-gray-200">
+                    <h3 class="text-lg font-medium text-[#4E695C] mb-4">Ubah Kata Sandi</h3>
+                    
+                    <form action="{{ route('password.update') }}" method="POST" class="space-y-4">
+                        @csrf
+                        @method('PUT')
+
+                        <div>
+                            <label for="current_password" class="block text-sm font-medium text-gray-700">Kata Sandi Saat Ini</label>
+                            <input id="current_password" name="current_password" type="password" 
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2">
+                            @error('current_password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700">Kata Sandi Baru</label>
+                            <input id="password" name="password" type="password" 
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2">
+                            @error('password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Kata Sandi Baru</label>
+                            <input id="password_confirmation" name="password_confirmation" type="password" 
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-2">
+                            @error('password_confirmation')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <button type="submit"
+                                class="bg-[#4E695C] text-white px-4 py-2 rounded-lg hover:bg-[#3b564a] transition">
+                                Ubah Kata Sandi
+                            </button>
+
+                            @if (session('status') === 'password-updated')
+                                <p class="text-sm text-green-600">Kata sandi berhasil diperbarui.</p>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    <footer class="bg-[#4E695C] text-white mx-8 rounded-b-[50px] shadow-lg mt-0">
+        <div class="bg-[#85908c] py-4">
+            <div class="container mx-auto px-6 text-center">
+                <p>&copy; {{ date('Y') }} BacaLagi. Hak Cipta Dilindungi.</p>
             </div>
         </div>
-    </div>
+    </footer>
+</body>
 
