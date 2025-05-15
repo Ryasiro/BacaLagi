@@ -81,6 +81,7 @@
         </div>
 
         <!--  Katalog -->
+        <!--  Katalog -->
         <!-- Katalog Buku Section -->
         <div class="px-14 mt-10 mb-20">
             <h2 class="text-2xl font-bold text-[#4E695C] mb-7">Katalog Buku</h2> <!-- Menambahkan judul katalog buku -->
@@ -91,8 +92,22 @@
                         <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->judul_buku }}"
                             class="w-full h-full object-cover object-top" />
                     </div>
-                    <div class="p-3 text-sm text-gray-700 font-semibold truncate">
-                        {{ $item->judul_buku }}
+                    <div class="p-3">
+                        <!-- Judul Buku -->
+                        <h3 class="text-sm text-gray-700 font-semibold truncate">
+                            {{ $item->judul_buku }}
+                        </h3>
+                        
+                        <!-- Harga Buku -->
+                        <p class="text-sm font-bold text-green-600 mt-1">
+                            Rp {{ number_format($item->harga_jual, 0, ',', '.') }}
+                        </p>
+                        
+                        <!-- Informasi Buku - Tampilkan sebagian dengan truncate -->
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-2 text-left">
+                            {{ $item->informasi_buku }}
+                        </p>
+                        
                     </div>
                 </a>
             @empty
